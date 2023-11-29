@@ -1,3 +1,6 @@
+# Code Snippets
+A Next JS application meant to create, view, and edit code snippets using Prisma with SQLite.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
