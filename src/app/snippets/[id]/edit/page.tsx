@@ -1,3 +1,4 @@
+import EditSnippetForm from '@/components/EditSnippetForm';
 import { db } from '@/db';
 import { notFound } from 'next/navigation';
 
@@ -16,6 +17,11 @@ export default async function EditSnippet(props: IEditSnippetProps) {
   if (!snippet) return notFound();
 
   return (
-    <div>EditSnippet: {id}</div>
+    <>
+      <div className="flex m-4 justify-between items-center">
+        <h1 className="text-xl font-bold">Edit {snippet.title}</h1>
+      </div>
+      <EditSnippetForm snippet={snippet} />
+    </>
   );
 }
