@@ -22,7 +22,7 @@ export default function CreateSnippet() {
 
   return (
     <form action={createSnippet}>
-      <h1 className="font-bold m3-">Create a Snippet</h1>
+      <h1 className="text-xl font-bold m-3">Create a Snippet</h1>
       <div className="flex flex-col gap-4">
         <div className="flex gap-4">
           <label htmlFor="title" className="w-12">Title</label>
