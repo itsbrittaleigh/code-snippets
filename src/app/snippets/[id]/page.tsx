@@ -1,5 +1,4 @@
-import { deleteSnippetById } from '@/actions/snippets';
-import { db } from '@/db';
+import { deleteSnippetById, getSnippetById } from '@/actions/snippets';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
@@ -13,9 +12,7 @@ export default async function ViewSnippet(props: IViewSnippetProps) {
   // Uncomment the following line to test loading component
   // await new Promise((r) => setTimeout(r, 2000));
   const id = parseInt(props.params.id, 10);
-  const snippet = await db.snippet.findFirst({
-    where: { id }
-  });
+  const snippet = await getSnippetById(id);
 
   if (!snippet) return notFound();
 

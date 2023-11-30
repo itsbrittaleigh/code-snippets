@@ -1,8 +1,8 @@
-import { db } from '@/db';
+import { getAllSnippets } from '@/actions/snippets';
 import Link from 'next/link';
 
 export default async function Home() {
-  const snippets = await db.snippet.findMany();
+  const snippets = await getAllSnippets();
 
   return (
     <>
