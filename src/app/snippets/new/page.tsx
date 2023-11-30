@@ -1,5 +1,5 @@
-import { db } from "@/db";
-import { redirect } from "next/navigation";
+import { db } from '@/db';
+import { redirect } from 'next/navigation';
 
 export default function CreateSnippet() {
   async function createSnippet(formData: FormData) {
