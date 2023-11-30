@@ -8,6 +8,8 @@ interface IViewSnippetProps {
 }
 
 export default async function ViewSnippet(props: IViewSnippetProps) {
+  // Uncomment the following line to test loading component
+  // await new Promise((r) => setTimeout(r, 2000));
   const { id } = props.params;
   const snippet = await db.snippet.findFirst({
     where: { 
