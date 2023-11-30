@@ -18,3 +18,11 @@ export async function editSnippetById(id: number, code: string) {
 
   redirect(`/snippets/${id}`);
 }
+
+export async function deleteSnippetById(id: number) {
+  await db.snippet.delete({
+    where: { id }
+  });
+
+  redirect('/');
+}
