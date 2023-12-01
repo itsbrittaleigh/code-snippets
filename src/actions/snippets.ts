@@ -3,6 +3,10 @@
 import { db } from '@/db';
 import { redirect } from 'next/navigation';
 
+interface IFormState {
+  message: string;
+}
+
 export async function getAllSnippets() {
   return await db.snippet.findMany();
 }
@@ -19,9 +23,21 @@ export async function getSnippetById(id: number | string) {
   });
 }
 
-export async function createSnippet(formData: FormData) {
+export async function createSnippet(formState: IFormState, formData: FormData) {
   const title = formData.get('title') as string;
   const code = formData.get('code') as string;
+
+  if (typeof title !== 'string' || title.length < 3) {
+    return {
+      message: 'Title must be longer.'
+    };
+  }
+
+  if (typeof code !== 'string' || code.length < 10) {
+    return {
+      message: 'Code must be longer.'
+    };
+  }
 
   await db.snippet.create({
     data: {

@@ -1,8 +1,13 @@
+'use client';
+
 import { createSnippet } from '@/actions/snippets';
+import { useFormState } from 'react-dom';
 
 export default function CreateSnippet() {
+  const [formState, action] = useFormState(createSnippet, { message: '' });
+
   return (
-    <form action={createSnippet}>
+    <form action={action}>
       <h1 className="text-xl font-bold m-3">Create a Snippet</h1>
       <div className="flex flex-col gap-4">
         <div className="flex gap-4">
@@ -22,6 +27,9 @@ export default function CreateSnippet() {
             name="code"
           />
         </div>
+        {!!formState.message && (
+          <p className="my-2 text-red-600">{formState.message}</p>
+        )}
         <button className="rounded p-2 bg-blue-200" type="submit">Create</button>
       </div>
     </form>
