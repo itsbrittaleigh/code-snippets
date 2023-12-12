@@ -1,4 +1,6 @@
 import { deleteSnippetById, getSnippetById } from '@/actions/snippets';
+import { db } from '@/db';
+import { Snippet } from '@prisma/client';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
@@ -41,4 +43,14 @@ export default async function ViewSnippet(props: IViewSnippetProps) {
       </pre>
     </>
   );
+}
+
+export async function generateStaticParams() {
+  const snippets = await db.snippet.findMany();
+
+  return snippets.map((snippet: Snippet) => {
+    return {
+      id: `${snippet.id}`,
+    };
+  });
 }
