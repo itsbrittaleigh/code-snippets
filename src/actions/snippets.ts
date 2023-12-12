@@ -1,6 +1,7 @@
 'use server';
 
 import { db } from '@/db';
+import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
 interface IFormState {
@@ -58,6 +59,7 @@ export async function createSnippet(formState: IFormState, formData: FormData) {
     }
   }
 
+  revalidatePath('/');
   redirect('/');
 }
 
@@ -76,5 +78,6 @@ export async function deleteSnippetById(id: number) {
     where: { id }
   });
 
+  revalidatePath('/');
   redirect('/');
 }
